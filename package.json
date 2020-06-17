@@ -18,6 +18,8 @@
     "xfetch": "^3.14.3"
   },
   "dependencies": {
-    "@types/jsdom": "^16.2.3"
+    "@types/jsdom": "^16.2.3",
+    "cheerio": "^1.0.0-rc.3",
+    "log4js": "^6.3.0"
   }
 }
