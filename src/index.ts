@@ -1,4 +1,8 @@
 import { init } from './init';
+import { confPath, dataPath, outPutPath } from './conf'
 
-
-init();
+init({
+    confPath: confPath,
+    dataPath: dataPath,
+    outPutPath: outPutPath
+});
