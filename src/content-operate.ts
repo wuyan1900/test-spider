@@ -25,6 +25,11 @@ export function parseHtml(result) {
   return obj;
 }
 
+/**
+ * 比较已存文件md5和新抓取网页的md5差别
+ * @param md5 
+ * @param options 初始化文件路径
+ */
 export function diffContentByMd5(md5, options) {
   const contentMd5 = getSaveContentMd5(options);
   return contentMd5 !== md5;
