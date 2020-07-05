@@ -17,6 +17,6 @@ export async function init(options?: ProcessOptions) {
         diffAndwriteContent(obj, pageMd5, options);
     }
     else {
-        console.log('没有增量内容.....');
+        // console.log('没有增量内容.....');
     }
 }

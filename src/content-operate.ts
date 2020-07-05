@@ -1,15 +1,15 @@
 
 import {createHash} from 'crypto'
-import { readFileSync, writeFile } from 'fs'
+import { readFileSync, writeFile, writeFileSync } from 'fs'
 import {logger} from './log4j'
-const cheerio = require('cheerio')
+import * as cheerio from 'cheerio'
 
 /**
  * 解析抓取网页的html
  * @param result 抓取的html网页内容
  * @returns parse html content
  */
-export function parseHtml(result) {
+export function parseHtml(result: string) {
   const $ = cheerio.load(result);
   
   let captionList = $('.item-id');
@@ -56,19 +56,20 @@ export function diffAndwriteContent (obj, md5, options) {
 }
 
 
-function writeContent(path, content) {
-  writeFile(path, content, (error) => {
-      if (error) {
-          logger.error(error);
-      }
-  });
+export function writeContent(path, content) {
+  try {
+    writeFileSync(path, content);
+  } catch (error) {
+    logger.error(error);
+  }
+  
 }
 
 /**
  * 比较抓取内容和文件已有内容的diff
  * @param pageContent 网页内容
  */
-function getDiffContent(pageContent, options) {
+export function getDiffContent(pageContent, options) {
   let file = readFileSync(options.dataPath);
   let fileContent = file.toString();
   let intersection;
